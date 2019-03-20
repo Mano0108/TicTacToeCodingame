@@ -8,7 +8,7 @@ Votre objectif sera d’implémenter soit l’algorithme MinMax soit l’algorit
 Les sources sont sur [bitbucket](www.bitbucket.org). L’adresse du repository est la suivante :
 
 ```bash
-git clone
+git clone https://francktempet@bitbucket.org/Num-ILD/tictactoe.git
 ```
 
 ## Quelques explications sur le code
