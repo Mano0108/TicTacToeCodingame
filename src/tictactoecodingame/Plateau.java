@@ -11,9 +11,9 @@ public abstract class Plateau  {
  
     abstract public void init();			// Initialise le plateau pour le démarrage d'une nouvelle partie.
 
-    abstract public Piece getPiece(Case _case);  	// Retourne la pièce presente sur la case pCase
+    abstract public Piece getPiece(Case _case);  	// Retourne la pièce presente sur la case _case
 
-    abstract public void joueCoup(Coup _coup);		// Joue le coup pCcoup sur le plateau
+    abstract public void joueCoup(Coup _coup);		// Joue le coup _coup sur le plateau
 
     abstract public void annuleDernierCoup();		// Annule le dernier coup joué
 
@@ -23,17 +23,17 @@ public abstract class Plateau  {
 
     abstract public boolean partieTerminee();		// Vrai si la partie est terminee ( soit un gagnant soit un match nulle )
 
-    abstract public boolean partieGagnee();		// Vrai si le dernier joueur  a gagnée la partie
+    abstract public boolean partieGagnee();		// Vrai si le dernier joueur  a gagné la partie
     
     abstract public boolean partieNulle();              // Vrai si la partie est nulle
     
-    abstract public Joueur vainqueur();                  // Retourne le joueur qui a gagne la partie
+    abstract public Joueur vainqueur();                  // Retourne le joueur qui a gagné la partie
 
     abstract public ArrayList<Coup> getListeCoups(Joueur _joueur); 	// Retourne la liste des coups possibles.
 
     abstract public boolean isValide(Coup _coup);		// Retourne Vrai si le coup est valide.
 
-    abstract public Coup stringToCoup(String _coup, Joueur _joueur);  // Convertion d'un chaine de caractère en un Coup
+    abstract public Coup stringToCoup(String _coup, Joueur _joueur);  // Convertion d'une chaine de caractères en un Coup
     
     abstract public void sauvegardePosition(int _index);              // Sauvegarde la position courante dans l'indice _index
     
@@ -41,15 +41,6 @@ public abstract class Plateau  {
     
     abstract public Coup getDernierCoup();                  // Retourne le dernierCoup joue
     
-    @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException ex) {
-            System.err.println("jeuplateau.Plateau.clone() : erreur lors du clonage du plateau");
-            return null;
-        }        
-    }
 
     public String toString() {						// Donne une représentation du plateau sous forme d'une chaine de caractères
         Piece piece;
