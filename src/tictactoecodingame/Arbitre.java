@@ -9,7 +9,7 @@ public class Arbitre {
 
     Joueur joueur1;         // Joueur qui commence la partie
     Joueur joueur2;         // Adversaire
-    Joueur currentJoueur;   // C'est Ã  son tour de jouer
+    Joueur currentJoueur;   // C'est à son tour de jouer
     Plateau plateau;        // Le plateau du jeu
 
     public Arbitre(Plateau _plateau, Joueur _joueur1, Joueur _joueur2) {
@@ -28,7 +28,7 @@ public class Arbitre {
     public Joueur startNewGame( boolean _trace ) {
         Coup coup;
 
-        plateau.init();		     // PrÃ©pare le plateau pour le jeu.
+        plateau.init();		     // Prépare le plateau pour le jeu.
         
         
         while (!plateau.partieTerminee()) {
@@ -42,7 +42,7 @@ public class Arbitre {
                 if (!plateau.isValide(coup)) {
                     if ( _trace )
                         System.err.println("Coup non valide ! : " + currentJoueur);
-                    else {  // on mode batch le joueur perd la partie
+                    else {  // en mode batch le joueur perd la partie
                         System.err.println("Coup non valide ! : " + currentJoueur);
                         if (currentJoueur == joueur1) return joueur2; else return joueur1;
                     }
