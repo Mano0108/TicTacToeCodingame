@@ -20,8 +20,8 @@ public class GrilleTicTacToe9x9 extends Plateau {
     Jeton[][][] grille3x3Sav = new Jeton[100][3][3];  // Pour sauvegarder la position
     int nbPostionSauvegarde;
 
-    CoupTicTacToe9x9 dernierCoup;
-    CoupTicTacToe9x9 dernierCoupSav;
+    CoupTicTacToe dernierCoup;
+    CoupTicTacToe dernierCoupSav;
     Joueur vainqueur;
     boolean grilleGagnee , grilleGagneeSav;  // vrai si dernier coup gagne une grille
 
@@ -51,7 +51,7 @@ public class GrilleTicTacToe9x9 extends Plateau {
 
     @Override
     public void joueCoup(Coup _coup) {
-        CoupTicTacToe9x9 coup = (CoupTicTacToe9x9) _coup;
+        CoupTicTacToe coup = (CoupTicTacToe) _coup;
 
         grille9x9[coup.getColonne()][coup.getLigne()] = coup.getJeton();
         dernierCoup = coup;
@@ -225,7 +225,7 @@ public class GrilleTicTacToe9x9 extends Plateau {
                     if ( grille3x3[(c/3)][(l/3)] != null ) continue;   // on ne peut pas jouer dans une grille gagnée
                     
                     if (grille9x9[c][l] == null) {
-                        listeCoups.add(new CoupTicTacToe9x9(c, l, new Jeton(_joueur)));
+                        listeCoups.add(new CoupTicTacToe(c, l, new Jeton(_joueur)));
                     }
                 }
             }
@@ -236,7 +236,7 @@ public class GrilleTicTacToe9x9 extends Plateau {
                 for (int l = 0; l < this.getNbLignes(); l++) {
                     if ( grille3x3[(c/3)][(l/3)] != null ) continue;   // on ne peut pas jouer dans une grille gagnée
                     if (grille9x9[c][l] == null) {
-                        listeCoups.add(new CoupTicTacToe9x9(c, l, new Jeton(_joueur)));
+                        listeCoups.add(new CoupTicTacToe(c, l, new Jeton(_joueur)));
                     }
                 }
             }
@@ -246,7 +246,7 @@ public class GrilleTicTacToe9x9 extends Plateau {
 
     @Override
     public boolean isValide(Coup _coup) {
-        CoupTicTacToe9x9 coup = (CoupTicTacToe9x9) _coup;
+        CoupTicTacToe coup = (CoupTicTacToe) _coup;
 
         if ( grille9x9[coup.getColonne()][coup.getLigne()] != null ) return false;
         
@@ -280,7 +280,7 @@ public class GrilleTicTacToe9x9 extends Plateau {
         int colonne = Integer.valueOf(_coup.charAt(0) + "");
         int ligne = Integer.valueOf(_coup.charAt(1) + "");
 
-        return new CoupTicTacToe9x9(colonne, ligne, new Jeton(_joueur));
+        return new CoupTicTacToe(colonne, ligne, new Jeton(_joueur));
     }
 
     @Override

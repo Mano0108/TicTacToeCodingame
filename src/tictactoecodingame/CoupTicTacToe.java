@@ -10,11 +10,11 @@ package tictactoecodingame;
  *
  * @author franck.tempet
  */
-public class CoupTicTacToe9x9 extends Coup {
+public class CoupTicTacToe extends Coup {
     private int colonne, ligne;
     private Jeton jeton;
 
-    public CoupTicTacToe9x9( int _colonne , int _ligne , Jeton _jeton ) {
+    public CoupTicTacToe( int _colonne , int _ligne , Jeton _jeton ) {
         super();
         colonne = _colonne;
         ligne = _ligne;       
@@ -44,7 +44,7 @@ public class CoupTicTacToe9x9 extends Coup {
         
         if (this.getClass() != obj.getClass()) return false;
         
-        CoupTicTacToe9x9 coup = (CoupTicTacToe9x9)obj;
+        CoupTicTacToe coup = (CoupTicTacToe)obj;
         
         return colonne == coup.getColonne() && ligne==coup.ligne && jeton.toString().equals(coup.getJeton().toString());
         

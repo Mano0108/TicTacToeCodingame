@@ -16,7 +16,7 @@ public class GrilleTicTacToe3x3 extends Plateau {
     Jeton[][] grille = new Jeton[3][3];
     Jeton[][][] grilleSav = new Jeton[100][3][3];  // Pour sauvegardr la position. 100 au maximum
 
-    CoupTicTacToe3x3 dernierCoup;
+    CoupTicTacToe dernierCoup;
     Joueur vainqueur;
 
     @Override
@@ -36,7 +36,7 @@ public class GrilleTicTacToe3x3 extends Plateau {
 
     @Override
     public void joueCoup(Coup _coup) {
-        CoupTicTacToe3x3 coup = (CoupTicTacToe3x3) _coup;
+        CoupTicTacToe coup = (CoupTicTacToe) _coup;
 
         grille[coup.getColonne()][coup.getLigne()] = coup.getJeton();
 
@@ -137,7 +137,7 @@ public class GrilleTicTacToe3x3 extends Plateau {
         for (int c = 0; c < this.getNbColonnes(); c++) {
             for (int l = 0; l < this.getNbLignes(); l++) {
                 if (grille[c][l] == null) 
-                    listeCoups.add(new CoupTicTacToe3x3(c, l, new Jeton(_joueur)));               
+                    listeCoups.add(new CoupTicTacToe(c, l, new Jeton(_joueur)));               
             }
         }
 
@@ -146,7 +146,7 @@ public class GrilleTicTacToe3x3 extends Plateau {
 
     @Override
     public boolean isValide(Coup _coup) {
-        CoupTicTacToe3x3 coup = (CoupTicTacToe3x3) _coup;
+        CoupTicTacToe coup = (CoupTicTacToe) _coup;
 
         return grille[coup.getColonne()][coup.getLigne()] == null;
     }
@@ -156,7 +156,7 @@ public class GrilleTicTacToe3x3 extends Plateau {
         int colonne = Integer.valueOf(_coup.charAt(0)+"");
         int ligne = Integer.valueOf(_coup.charAt(1)+"");
 
-        return  new CoupTicTacToe3x3(colonne, ligne , new Jeton(_joueur) );
+        return  new CoupTicTacToe(colonne, ligne , new Jeton(_joueur) );
     }
 
     @Override
