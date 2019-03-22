@@ -1,7 +1,7 @@
 # Algorithme MinMax et Monte Carlo
 # Objectif
 
-Votre objectif sera d’implémenter soit l’algorithme MinMax soit l’algorithme MonteCarlo Tree Search sur le jeu TicTacToe présent sur la plateforme [Codingame](https://www.codingame.com/start). Vous partirez d’un code Java existant afin de vous focaliser essentiellement sur ces algorithmes. 
+Votre objectif sera d’implémenter l’algorithme MinMax et l’algorithme MonteCarlo Tree Search sur le jeu TicTacToe présent sur la plateforme [Codingame](https://www.codingame.com/start). Vous partirez d’un code Java existant afin de vous focaliser essentiellement sur ces algorithmes. 
 
 # Récupérer le code Java
 
@@ -95,11 +95,7 @@ java –jar builder.jar .\tictactoecodingame\Player.java
 ```
 # Amélioration des algorithmes
 
-Lorsque votre algorithme MinMax ou MCTS sera implémenté et fonctionnera correctement, votre objectif sera de rechercher les possibilités d'améliorations de ces algorithmes. Vous indiquerez le résultat de vos recherches et les implémenterez afin d'améliorer votre IA.
-
-
-
-
+Lorsque vos algorithmes MinMax et MCTS seront implémentés et fonctionneront correctement, votre objectif sera de rechercher les possibilités d'améliorations de ces algorithmes. Vous indiquerez le résultat de vos recherches et les implémenterez afin d'améliorer votre IA.
 
 
 
