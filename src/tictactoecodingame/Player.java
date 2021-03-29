@@ -41,6 +41,7 @@ public class Player {
     import java.util.Scanner;
 
 essaie github nouveau text
+test2
 
     class Player {
 
