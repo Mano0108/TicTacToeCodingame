@@ -9,6 +9,11 @@ public class JeuAleatoireMC {
             int randomIndex = generator.nextInt(coups.length);
             Coup coup = coups.get(randomIndex);
             plateau.joueCoup(coup);
+          if (currentJoueur == joueur1) {
+                joueur = joueur2;
+            } else {
+                joueur = joueur1;
+            }
         }
         return plateau.vainqueur();
 
