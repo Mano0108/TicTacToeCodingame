@@ -1,4 +1,4 @@
 package tictactoecodingame;
 
-public class JeuAleatoireMT {
+public class AlgoRechercheMC {
 }
