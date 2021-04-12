@@ -9,9 +9,12 @@ public class AlgoRechercheMC {
     ArbreMC arbre = new ArbreMC();
     NoeudMC noeudRacine = ArbreMC.getRacine();
 
-    public Coup prochaincoup(Plateau plateau, Joueur joueur1){
-        while (nbSimulations<nombreiteration){
+    public Coup prochaincoup(Plateau plateau, Joueur joueur1) {
+        while (nbSimulations < nombreiteration) {
 
         }
+
+        //à finir
+        return prochaincoup(plateau, joueur1);
     }
 }
