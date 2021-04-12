@@ -21,7 +21,5 @@ public class JeuAleatoireMC {
         else {
             return 0;
         }
-
-
     }
 }

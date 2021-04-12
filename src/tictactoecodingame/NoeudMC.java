@@ -1,6 +1,7 @@
 package tictactoecodingame;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class NoeudMC {
     NoeudMC parent; //renvoie le noeud précédent
@@ -11,6 +12,11 @@ public class NoeudMC {
 
     public List<NoeudMC> getNoeudsEnfants() {
         return noeudsEnfants;
+    }
+
+    public Noeuds() {
+        this.state = new State();
+        noeudsEnfants = new ArrayList<>();
     }
 }
 
