@@ -1,21 +1,27 @@
 package tictactoecodingame;
 import java.util.Random;
+import java.util.ArrayList;
+
 
 public class JeuAleatoireMC {
-  public int partie_rd(Plateau plateau, Joueur joueur){
+  public int partie_rd(Plateau plateau, Joueur currentJoueur, Joueur joueur1, Joueur joueur2){
         while (!plateau.partieTerminee()){
-            ArrayList<Coup> coups = plateau.getListeCoups(joueur);
+            ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
             Random generator = new Random();
-            int randomIndex = generator.nextInt(coups.length);
+            int randomIndex = generator.nextInt(coups.size());
             Coup coup = coups.get(randomIndex);
             plateau.joueCoup(coup);
-          if (currentJoueur == joueur1) {
-                joueur = joueur2;
-            } else {
-                joueur = joueur1;
-            }
         }
-        return plateau.vainqueur();
+        if (plateau.vainqueur()==joueur1){
+            return 1;
+        }
+        else if (plateau.vainqueur()==joueur2){
+            return -1;
+        }
+        else {
+            return 0;
+        }
+
 
     }
 }
