@@ -19,7 +19,7 @@ public class ArbreMC {
         this.racine = racine;
     }
 
-    public void ajouterEnfant(NoeudMC parent, NoeudMC enfant){
+    public static void ajouterEnfant(NoeudMC parent, NoeudMC enfant){
         parent.getNoeudsEnfants().add(enfant);
     }
 }
