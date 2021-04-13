@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class JeuxAleatoireMC {
 
-    public int partie_rd(Plateau plateau, Joueur currentJoueur, Joueur joueur1, Joueur joueur2) {
+    public static int partie_rd(Plateau plateau, Joueur currentJoueur, Joueur joueur1, Joueur joueur2) {
         while (!plateau.partieTerminee()) {
             ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
             Random generator = new Random();
