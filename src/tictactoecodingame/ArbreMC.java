@@ -11,7 +11,7 @@ public class ArbreMC {
         this.racine=racine;
     }
 
-    public NoeudMC getRacine(){
+    public static NoeudMC getRacine(){
         return racine;
     }
 
