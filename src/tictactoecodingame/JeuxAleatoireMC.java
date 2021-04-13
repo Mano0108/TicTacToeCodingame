@@ -24,4 +24,5 @@ public class JeuxAleatoireMC {
         }
         return 0;
     }
+
 }

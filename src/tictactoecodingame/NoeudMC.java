@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class NoeudMC {
     NoeudMC parent; //renvoie le noeud précédent
     // Manque le State
-    ArrayList<NoeudMC> noeudsEnfants; // renvoie la liste des noeuds enfants
+    static ArrayList<NoeudMC> noeudsEnfants; // renvoie la liste des noeuds enfants
     int nbSimulations  ; // nombre de partie lancer sous le noeud
     int nbVictoire; // nombre de victoire sur le noeud
     Plateau plateau;
@@ -78,7 +78,7 @@ public class NoeudMC {
 
 
 
-    public ArrayList<NoeudMC> getNoeudsEnfants() {
+    public static ArrayList<NoeudMC> getNoeudsEnfants() {
         return noeudsEnfants;
     }
 
