@@ -12,18 +12,18 @@ public class Player {
 
     public static void main(String args[]) {
         
-        JoueurHumain humain = new JoueurHumain("Humain");     
-        JoueurOrdi joueurOrdi = new JoueurOrdi("Ordi");
+        JoueurOrdi joueurOrdi2 = new JoueurOrdi("Ordi1");
+        JoueurHumain joueurOrdi = new JoueurHumain("Ordi2");
        
         
         // Remplacer ici l'algorithme aléatoire par votre algorithme. 
         // Créer une nouvelle classe qui hérite de la class AlgoRecherche
-        AlgoRechercheAleatoire alea  = new AlgoRechercheAleatoire( );   // L'ordinateur joue au hasard
-        joueurOrdi.setAlgoRecherche(alea);                              
-             
+        AlgoMinimax minimax  = new AlgoMinimax();   // L'ordinateur joue au hasard
+        joueurOrdi2.setAlgoRecherche(minimax);
+        //joueurOrdi2.setAlgoRecherche(minimax);
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
-        Arbitre a = new Arbitre(grille, joueurOrdi , humain );
+        Arbitre a = new Arbitre(grille, joueurOrdi , joueurOrdi2 );
        
         a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
        

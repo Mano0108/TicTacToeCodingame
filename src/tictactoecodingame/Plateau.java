@@ -66,5 +66,7 @@ public abstract class Plateau  {
         for (int colonne = 0; colonne < getNbColonnes(); colonne++) 
             chainePlateau += "  "+ colonne + " ";
         return chainePlateau;
-    }          
+    }
+
+
 }
