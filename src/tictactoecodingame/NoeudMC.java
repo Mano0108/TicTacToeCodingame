@@ -15,7 +15,7 @@ public class NoeudMC {
     }
 
     public Noeuds() {
-        //this.state = new State();
+        this.Plateau = new Plateau();
         noeudsEnfants = new ArrayList<>();
     }
 }

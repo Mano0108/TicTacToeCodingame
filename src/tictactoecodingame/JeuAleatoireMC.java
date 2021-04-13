@@ -14,7 +14,7 @@ public class AlgoRechercheMC {
     NoeudMC noeudRacine = ArbreMC.getRacine();
 
     public Coup meilleur_coup(Plateau plateau, Joueur currentJoueur, Joueur joueur1, Joueur joueur2){
-        
+        return ;
 
     }
     public static NoeudMC selection(NoeudMC noeud){
@@ -31,7 +31,7 @@ public class AlgoRechercheMC {
 
     }
     public static void expansion(NoeudMC noeud_ori, Joueur currentJoueur){
-       ArrayList coups = noeud_ori.plateau.getListeCoups(currentJoueur);
+       ArrayList<Coup> coups = noeud_ori.plateau.getListeCoups(currentJoueur);
        Plateau plateau = noeud_ori.plateau;
        for(int k=0;k<coups.size();k++){
            NoeudMC nv_noeud = new NoeudMC();
