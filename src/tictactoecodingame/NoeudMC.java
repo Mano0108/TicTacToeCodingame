@@ -9,6 +9,7 @@ public class NoeudMC {
     ArrayList<NoeudMC> noeudsEnfants; // renvoie la liste des noeuds enfants
     int nbSimulations  ; // nombre de partie lancer sous le noeud
     int nbVictoire; // nombre de victoire sur le noeud
+    Plateau plateau;
 
     public Noeuds() {
         //this.state = new State();

@@ -1,7 +1,7 @@
 package tictactoecodingame;
 
 public class ArbreMC {
-    NoeudMC racine;
+    static NoeudMC racine;
 
     public ArbreMC(){
         racine = new NoeudMC();
