@@ -23,7 +23,7 @@ public class AlgoRechercheM_C extends AlgoRecherche{
         long t1 = System.currentTimeMillis();
         ArbreMC arbre = new ArbreMC(_plateau,_joueur,joueurAdverse,C);
         int compteur = 0;
-        while(t1-t0<95 && compteur<nbSimulation){
+        while(t1-t0<500 && compteur<nbSimulation){
             arbre.developper(1);
             t1=System.currentTimeMillis();
             compteur++;

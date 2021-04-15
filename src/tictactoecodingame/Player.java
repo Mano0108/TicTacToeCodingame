@@ -24,17 +24,17 @@ public class Player {
 
 
 
-        AlgoRechercheM_C MonteCarlo = new AlgoRechercheM_C(5000,1.41,joueurOrdi2);
-        AlgoRechercheM_C MonteCarlo2 = new AlgoRechercheM_C(6000, 1.41, joueurOrdi1);
-        joueurOrdi1.setAlgoRecherche(MonteCarlo2);
-        joueurOrdi2.setAlgoRecherche(MonteCarlo);
+        AlgoRecherche Aleatoire = new AlgoRechercheAleatoire();
+        AlgoRechercheM_C MonteCarlo2 = new AlgoRechercheM_C(6000, 1.41, joueurOrdi2);
+        joueurOrdi1.setAlgoRecherche(Aleatoire);
+        joueurOrdi2.setAlgoRecherche(MonteCarlo2);
 
 
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
         Arbitre a = new Arbitre(grille, joueurOrdi1 , joueurOrdi2 );
        
-        a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
+        a.startTournament(1000, false);    // Demarre une partie en affichant la grille du jeu
        
        // Pour lancer un tournooi de 100 parties en affichant la grille du jeu
         //a.startTournament(1000 , false);

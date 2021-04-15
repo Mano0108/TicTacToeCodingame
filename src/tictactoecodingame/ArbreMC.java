@@ -11,6 +11,7 @@ public class ArbreMC {
     // -le nombre de simulation et de victoire
     // -le pere du noeud (nul si c'est la racine)
     // -une liste des coups non visités
+
     private Coup coup;
     private ArrayList<ArbreMC> sousArbres;
     private boolean estMonTour;
@@ -18,14 +19,20 @@ public class ArbreMC {
     private int nbVictoire;
     private ArbreMC pere;
     private ArrayList<Coup> coupNonVisites;
+
+
     //Les paramètres communs à tous les noeuds de l'arbre (rentré dans le constructeur de la racine):
     // -Le plateau au tour de l'IA, qui sera manipulé de telle sorte à ce qu'il ne soit pas modifié après construction de l'arbre
     // -Les 2 joueurs, pour que les jetons soient différenciable par la fonction d'évaluation
     // -La constante d'exploration C de la fonction de sélection.
+
+
     private static Plateau plateau;
     private static Joueur monJoueur;
     private static Joueur joueurAdverse;
     private static double C;
+
+
     //On définit les constantes VICTOIRE, DEFAITE et NUL pour une meilleure compréhension du reour de simulation
     private static final int VICTOIRE = 0;
     private static final int DEFAITE = 1;
@@ -102,6 +109,10 @@ public class ArbreMC {
         nbVictoire++;
     }
 
+    public void incrementerNbDefaite(){
+        nbVictoire--;
+    }
+
     public ArbreMC selection(){ //On descend de l'arbre grace à la fonction de sélection en choisissant la feuille ayant une fonction d'évaluation maximale
         int Sp = nbSimul;
         int Si;
@@ -117,7 +128,6 @@ public class ArbreMC {
                 Si = getSousArbre(i).getNbSimulation();
                 Vi = getSousArbre(i).getNbVictoire();
                 noteSelection = Vi/Si + C*Math.sqrt(Math.log(Sp)/Si);
-                System.out.println("UTC ="+Vi/Si + C*Math.sqrt(Math.log(Sp)/Si));
                 if(max<noteSelection){
                     max = noteSelection;
                     positionMax = i;
@@ -187,9 +197,13 @@ public class ArbreMC {
         //On incremente le nombre de victoire si c'est un noeud du joueur adverse et que l'on a gagné
         if(!estMonTour&&resultat==VICTOIRE)
             incrementerNbVictoire();
+        if(estMonTour&&resultat==VICTOIRE)
+            incrementerNbVictoire();
+        if(!estMonTour&&resultat==DEFAITE)
+            incrementerNbDefaite();
         //On incremente le nombre de victoire si c'est notre noeud et que l'on a perdu
         if(estMonTour&&resultat==DEFAITE)
-            incrementerNbVictoire();
+            incrementerNbDefaite();
         //Dans tous les cas, on augmente le nombre de simulation
         incrementerNbSimulation();
         //On s'arrete lorsque l'on atteint la racine de l'arbre
