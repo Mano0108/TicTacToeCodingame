@@ -226,7 +226,7 @@ public class ArbreMC {
 
     //On lit l'arbre en choisissant le coup avec le meilleur ratio victoires/partieJouées
     public Coup getMeilleurCoup(){
-        double max = (double) getSousArbre(0).getNbVictoire()/getSousArbre(0).getNbSimulation();;
+        double max = (double) getSousArbre(0).getNbVictoire()/getSousArbre(0).getNbSimulation();
         int positionMax = 0;
         double pourcentageReussite;
         for(int i=0;i<sousArbres.size();i++){

@@ -14,6 +14,7 @@ public class Player {
         
         JoueurOrdi joueurOrdi2 = new JoueurOrdi("Ordi1");
         JoueurOrdi joueurOrdi1= new JoueurOrdi("Ordi2");
+        JoueurOrdi joueurOrdi3= new JoueurOrdi("Ordi3");
        
         
         // Remplacer ici l'algorithme aléatoire par votre algorithme. 
@@ -25,14 +26,16 @@ public class Player {
 
 
         AlgoRecherche Aleatoire = new AlgoRechercheAleatoire();
-        AlgoRechercheM_C MonteCarlo2 = new AlgoRechercheM_C(6000, 1.41, joueurOrdi2);
+        AlgoRechercheM_C MonteCarlo2 = new AlgoRechercheM_C(6000, 1.35, joueurOrdi2);
+        AlgoMinimax Minmax = new AlgoMinimax();
         joueurOrdi1.setAlgoRecherche(Aleatoire);
+        joueurOrdi3.setAlgoRecherche(Minmax);
         joueurOrdi2.setAlgoRecherche(MonteCarlo2);
 
 
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
-        Arbitre a = new Arbitre(grille, joueurOrdi1 , joueurOrdi2 );
+        Arbitre a = new Arbitre(grille, joueurOrdi3 , joueurOrdi1 );
        
         a.startTournament(1000, false);    // Demarre une partie en affichant la grille du jeu
        
