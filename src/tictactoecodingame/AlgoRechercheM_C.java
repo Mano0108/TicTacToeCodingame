@@ -4,15 +4,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class AlgoRechercheM_C {
-    //une methode , avec un while (nombre d'iterations) pour lancer des simulations (4 etapes; selection, expansion, simulation, update) pour trouver le prochain Coup
-    //une méthode pour chaque étape
-    //
-    int nombreiteration;
-    int nbSimulations;
-    ArbreMC arbre = new ArbreMC();
-    NoeudMC noeudRacine = ArbreMC.getRacine();
 
-    public Coup meilleur_coup(Plateau plateau, Joueur currentJoueur, Joueur joueur1, Joueur joueur2){
+    int nbSimulation;
+    double C;
+    Joueur enemie;
+    ArbreMC arbreM;
+    Coup dernierCoup;
+
+    public Coup meilleur_coup(Plateau plateau, Joueur currentJoueur, Joueur joueur1, Joueur joueur2, int nombreiteration){
+        int compteurdepartiejouée = 0;
+        int gain=0;
+        ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
+        int [] tableaucoup = new int [coups.size()];
+        while (compteurdepartiejouée<nombreiteration){
+            tableaucoup[]+=JeuxAleatoireMC.partie_rd(plateau, currentJoueur, joueur1, joueur2);
+        }
         return ;
 
     }

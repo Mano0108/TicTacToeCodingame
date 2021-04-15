@@ -12,16 +12,17 @@ public class JeuxAleatoireMC {
             int randomIndex = generator.nextInt(coups.size());
             Coup coup = coups.get(randomIndex);
             plateau.joueCoup(coup);
-            if (plateau.vainqueur() == joueur1) {
-                return 1;
-            } else if (plateau.vainqueur() == joueur2) {
-                return -1;
-            } else {
-                return 0;
-            }
-
-
         }
+
+
+        if (plateau.vainqueur() == joueur1) {
+            return 1;
+        } else if (plateau.vainqueur() == joueur2) {
+            return -1;
+        } else {
+            return 0;
+        }
+
         return 0;
     }
 

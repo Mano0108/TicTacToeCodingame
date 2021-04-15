@@ -1,13 +1,13 @@
-//package tictactoecodingame;
-//
-//public class Etat {
-//    Plateau plateau ;
-//    Joueur joueur;
-//    int nbSimulation;
-//    double score;
-//
-//    public Etat(){
-//        plateau=new Plateau();
-//    }
-//
-//}
+package tictactoecodingame;
+
+public class Etat {
+    private Plateau plateau ;
+    private Joueur joueur;
+    private int nbVisit;
+    private double nbVictoire;
+
+    public Etat(){
+        plateau = new Plateau();
+    }
+
+}
