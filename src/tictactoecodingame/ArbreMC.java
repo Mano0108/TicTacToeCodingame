@@ -117,6 +117,7 @@ public class ArbreMC {
                 Si = getSousArbre(i).getNbSimulation();
                 Vi = getSousArbre(i).getNbVictoire();
                 noteSelection = Vi/Si + C*Math.sqrt(Math.log(Sp)/Si);
+                System.out.println("UTC ="+Vi/Si + C*Math.sqrt(Math.log(Sp)/Si));
                 if(max<noteSelection){
                     max = noteSelection;
                     positionMax = i;

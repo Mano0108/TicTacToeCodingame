@@ -3,7 +3,7 @@ package tictactoecodingame;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class AlgoRechercheM_C {
+public class AlgoRechercheM_C extends AlgoRecherche{
 
     int nbSimulation;
     double C;
@@ -11,7 +11,7 @@ public class AlgoRechercheM_C {
     ArbreMC arbreM;
     Coup dernierCoup;
 
-    public AlgoRechercheM_C(int nbsimulation,double c,Joueur jA){
+    public AlgoRechercheM_C(int nbsimulation, double c, Joueur jA){
         nbSimulation=nbsimulation;
         C=c;
         joueurAdverse=jA;
