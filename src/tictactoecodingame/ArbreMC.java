@@ -124,6 +124,7 @@ public class ArbreMC {
             Si = getSousArbre(0).getNbSimulation();
             Vi = getSousArbre(0).getNbVictoire();
             max = Vi/Si + C*Math.sqrt(Math.log(Sp)/Si);
+            //System.out.println("taille sous arbre= "+sousArbres.size());
             for(int i = 0;i<sousArbres.size();i++){    //On parcourt les sous arbres et on retient la position où le maximum de la fonction de sélection a été atteint
                 Si = getSousArbre(i).getNbSimulation();
                 Vi = getSousArbre(i).getNbVictoire();
@@ -209,8 +210,8 @@ public class ArbreMC {
         if(pere!=null)
             //Sinon on applique la méthode récursivement au père pour remonter
             pere.backPropagation(resultat);
-        System.out.println("nbVictoire=" + nbVictoire);
-        System.out.println("nbsimule =" + nbSimul);
+        //System.out.println("nbVictoire=" + nbVictoire);
+        //System.out.println("nbsimule =" + nbSimul);
 
 
     }
