@@ -10,17 +10,7 @@ public class AlgoMinimax extends AlgoRecherche {
     public AlgoMinimax(){}
 
 
-    public int evaluation3x3(Plateau _plateau, Joueur _joueur){
 
-        if(_plateau.partieTerminee()){
-            if(_plateau.partieNulle()){return 0;}
-            if(_plateau.vainqueur()==_joueur){return 10;}
-            else {return -10;}
-
-        }
-
-        return 0;
-    }
 
 
     //teste pour une grille 9x9 si le joueur a gagné la case 3x3 de milieu (milieuI, milieuJ)
