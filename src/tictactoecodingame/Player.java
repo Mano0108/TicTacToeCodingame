@@ -12,20 +12,34 @@ public class Player {
 
     public static void main(String args[]) {
         
-        JoueurHumain humain = new JoueurHumain("Humain");     
-        JoueurOrdi joueurOrdi = new JoueurOrdi("Ordi");
-       
+        JoueurOrdi joueurOrdi2 = new JoueurOrdi("Ordi1");
+        JoueurOrdi joueurOrdi1= new JoueurOrdi("Ordi2");
+        JoueurOrdi joueurOrdi3= new JoueurOrdi("Ordi3");
+        JoueurOrdi joueurOrdi4 = new JoueurOrdi("Ordi4");
         
         // Remplacer ici l'algorithme aléatoire par votre algorithme. 
         // Créer une nouvelle classe qui hérite de la class AlgoRecherche
-        AlgoRechercheAleatoire alea  = new AlgoRechercheAleatoire( );   // L'ordinateur joue au hasard
-        joueurOrdi.setAlgoRecherche(alea);                              
-             
+        //AlgoMinimax minimax  = new AlgoMinimax();   // L'ordinateur joue au hasard
+        //joueurOrdi2.setAlgoRecherche(minimax);
+        //joueurOrdi2.setAlgoRecherche(minimax);
+
+
+
+        AlgoRecherche Aleatoire = new AlgoRechercheAleatoire();
+        AlgoRechercheM_C MonteCarlo2 = new AlgoRechercheM_C(6000, 1.35, joueurOrdi2);
+        AlgoRecherche MonteCarlo4 = new AlgoRechercheM_C(6000, 1.41, joueurOrdi4);
+        AlgoMinimax Minmax = new AlgoMinimax();
+    joueurOrdi1.setAlgoRecherche(Aleatoire);
+        joueurOrdi3.setAlgoRecherche(Minmax);
+        joueurOrdi2.setAlgoRecherche(MonteCarlo2);
+        joueurOrdi4.setAlgoRecherche(MonteCarlo4);
+
+
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
-        Arbitre a = new Arbitre(grille, joueurOrdi , humain );
+        Arbitre a = new Arbitre(grille, joueurOrdi4 , joueurOrdi2 );
        
-        a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
+        a.startTournament(100, false);    // Demarre une partie en affichant la grille du jeu
        
        // Pour lancer un tournooi de 100 parties en affichant la grille du jeu
         //a.startTournament(1000 , false);
