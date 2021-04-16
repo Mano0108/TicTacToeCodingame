@@ -41,14 +41,14 @@ public class AlgoRechercheAleatoire extends AlgoRecherche{
 
         System.out.println();*/
 
-        for(int i = 0; i<3; i++){
+        /*for(int i = 0; i<3; i++){
             for(int j = 0; j<3; j++){
                 Case c =  new Case(i,j);
                 System.out.println(" coup " + i + " " + j +" = " );
                 System.out.println(_plateau.getPiece(c));
 
             }
-        }
+        }*/
 
         return coups.get(rnd.nextInt( coups.size()));
     }
