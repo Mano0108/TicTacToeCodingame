@@ -106,11 +106,11 @@ public class ArbreMC {
     }
 
     public void incrementerNbVictoire(){
-        nbVictoire++;
+        nbVictoire=nbVictoire+1;
     }
 
     public void incrementerNbDefaite(){
-        nbVictoire--;
+        nbVictoire=nbVictoire-1;
     }
 
     public ArbreMC selection(){ //On descend de l'arbre grace à la fonction de sélection en choisissant la feuille ayant une fonction d'évaluation maximale
@@ -124,7 +124,7 @@ public class ArbreMC {
             Si = getSousArbre(0).getNbSimulation();
             Vi = getSousArbre(0).getNbVictoire();
             max = Vi/Si + C*Math.sqrt(Math.log(Sp)/Si);
-            for(int i = 0;i<sousArbres.size();i++){                //On parcourt les sous arbres et on retient la position où le maximum de la fonction de sélection a été atteint
+            for(int i = 0;i<sousArbres.size();i++){    //On parcourt les sous arbres et on retient la position où le maximum de la fonction de sélection a été atteint
                 Si = getSousArbre(i).getNbSimulation();
                 Vi = getSousArbre(i).getNbVictoire();
                 noteSelection = Vi/Si + C*Math.sqrt(Math.log(Sp)/Si);
@@ -194,22 +194,25 @@ public class ArbreMC {
     public void backPropagation(int resultat){
         //On modifie les nombre de victoire et de simulation en remontant jusqu'à la racine, grâce au père
 
-        //On incremente le nombre de victoire si c'est un noeud du joueur adverse et que l'on a gagné
-        if(!estMonTour&&resultat==VICTOIRE)
+        //On incremente le nombre de victoire
+        if(resultat==VICTOIRE){
             incrementerNbVictoire();
-        if(estMonTour&&resultat==VICTOIRE)
-            incrementerNbVictoire();
-        if(!estMonTour&&resultat==DEFAITE)
+        }
+        else if(resultat==DEFAITE){
             incrementerNbDefaite();
-        //On incremente le nombre de victoire si c'est notre noeud et que l'on a perdu
-        if(estMonTour&&resultat==DEFAITE)
-            incrementerNbDefaite();
+        }
+        if(resultat==NUL)
+            nbVictoire = nbVictoire; //inutile
         //Dans tous les cas, on augmente le nombre de simulation
         incrementerNbSimulation();
         //On s'arrete lorsque l'on atteint la racine de l'arbre
         if(pere!=null)
             //Sinon on applique la méthode récursivement au père pour remonter
             pere.backPropagation(resultat);
+        System.out.println("nbVictoire=" + nbVictoire);
+        System.out.println("nbsimule =" + nbSimul);
+
+
     }
 
 
@@ -231,6 +234,8 @@ public class ArbreMC {
         double pourcentageReussite;
         for(int i=0;i<sousArbres.size();i++){
             pourcentageReussite = (double) getSousArbre(i).getNbVictoire()/getSousArbre(i).getNbSimulation();
+
+
             if(max< pourcentageReussite){
                 max = pourcentageReussite;
                 positionMax = i;

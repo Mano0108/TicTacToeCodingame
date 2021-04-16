@@ -35,9 +35,9 @@ public class Player {
 
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
-        Arbitre a = new Arbitre(grille, joueurOrdi3 , joueurOrdi1 );
+        Arbitre a = new Arbitre(grille, joueurOrdi1 , joueurOrdi2 );
        
-        a.startTournament(1000, false);    // Demarre une partie en affichant la grille du jeu
+        a.startTournament(100, false);    // Demarre une partie en affichant la grille du jeu
        
        // Pour lancer un tournooi de 100 parties en affichant la grille du jeu
         //a.startTournament(1000 , false);
