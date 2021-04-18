@@ -1,101 +1,30 @@
-# Algorithme MinMax et Monte Carlo
-# Objectif
+# Minimax
+## Principe de l’algorithme 
 
-Votre objectif sera d’implémenter l’algorithme MinMax et l’algorithme MonteCarlo Tree Search sur le jeu TicTacToe présent sur la plateforme [Codingame](https://www.codingame.com/start). Vous partirez d’un code Java existant afin de vous focaliser essentiellement sur ces algorithmes. 
+Le principe de cet algorithme est le suivant : 
+Une fonction d’évaluation permet de donner un score a une position donnée d’une partie d’Ultimate Tic Tac Toe. Ce score est établi suivant ce processus : pour le joueur maximisant, une sous grille 3x3 remportée rajoute 50 points au score. Pour les sous grilles non remportées, les cases centrales remportées rapportent 5 points, les coins 3 points et les côtés 2 points. Enfin, une grille 9x9 gagnée rapporte 1000 points. Pour le joueur minimisant, il suffit d’enlever les points au lieu de les rajouter.
 
-# Récupérer le code Java
-
-Les sources sont sur [bitbucket](www.bitbucket.org). L’adresse du repository est la suivante :
-
-```bash
-git clone https://francktempet@bitbucket.org/Num-ILD/tictactoe.git
-```
-
-## Quelques explications sur le code
-
-### La classe Player
-
-Cette classe contient la méthode **main** du programme. Elle crée un joueur «*humain*» ainsi qu’un joueur «*Ordinateur*». L’ordinateur joue les coups de manière aléatoire.   
-
-### La classe Plateau
-
-Regarder les méthodes contenues dans cette classe ainsi que les commentaires associés. Cette classe est une classe abstraite qui liste les méthodes nécessaires à la manipulation d’un jeu de plateau à deux joueurs. Vous aurez besoin essentiellement des méthodes suivantes :
-\newpage
-
->- partieTerminee()
->- getListeCoups()
->- vainqueur()
->- joueCoup()
->- sauvegardePosition()
->- restaurePosition()
->- annuleDernierCoup()
->- ….
+A l’aide de cette fonction d’évaluation, l’algorithme va évaluer toutes les positions atteignables jusqu’à une certaine profondeur. En suite il considère comme « meilleur coup » le coup qui permet au joueur d’atteindre la position avec le meilleur score possible en considérant que le joueur adverse va lui aussi jouer le coup qui est le meilleur pour lui à chaque coup.
 
 
-### La classe GrilleTicTacToe3x3
+## Améliorations apportées 
 
-Cette classe représente la grille du jeu TicTacToe de dimension 3x3. Cette classe hérite de Plateau, elle implémente donc toutes les méthodes abstraites présentes dans la classe Plateau. C’est cette grille que vous utiliserez dans un premier temps.
-
-### La classe GrilleTicTacToe9x9
-
-Cette classe représente la grille du jeu TicTacToe de dimension 9x9. Cette classe hérite de Plateau, elle implémente donc toutes les méthodes abstraites présentes dans la classe Plateau. Cette grille sera utilisée lorsque vous aurez franchi le premier niveau sur Codingame.
-
-# Implémenter l'algorithme
-
-Regardez en détail le contenu de la classe **Player**. La création de l’IA ( *joueurOrdi* ) nécessite  d’appeler la méthode **setAlgoRecherche** en lui passant en paramètre une instance d’une classe qui implémente l’interface **AlgoRecherche**. Dans notre cas c'est la classe **AlgoRechercheAleatoire** qui implémente cette interface. Elle implémente donc la méthode suivante :
-
-```java
-public Coup meilleurCoup(Plateau _plateau, Joueur _joueur, boolean _ponder)
-```
-
-On doit passer à cette méthode le plateau du jeu ( *ici GrilleTicTacToe3x3* ) , le joueur à qui c'est le tour de jouer et un dernier paramètre qui indique si l'ordinateur peut analyser la position lorsque c'est à son adversaire de jouer.
-
-L'algorithme aléatoire récupère la liste des coups possibles à partir de la position courante et en choisit un au hasard.
-
-```java
-Random rnd;
-
-public Coup meilleurCoup(Plateau _plateau, Joueur _joueur, boolean _ponder) {    
-
-    ArrayList<Coup> coups = _plateau.getListeCoups(_joueur);   
-    return coups.get(rnd.nextInt( coups.size()));
-}
-```
-
-
-Vous devrez donc écrire soit une classe AlgoMinMax soit une classe AlgoMCTS. Ces deux classes devront implémenter également l’interface *AlgoRecherche* ce qui revient à écrire la méthode *meilleurCoup*.
+- Après avoir joué plusieurs parties avec la première version de l’algorithme, nous nous sommes rendus compte que le fait de privilégier les cases centrales permettait au joueur adverse de facilement remporter la grille 3x3 centrale. Pour remédier à cela, nous avons rajouter la condition suivante : si jouer sur une case centrale permet au joueur adverse de remporter la grille 3x3 centrale au coup suivant, alors on retire 10 points au score de la position si le joueur est maximisant (respectivement ajoute 10 points s’il est minimisant).
+- La deuxième amélioration apportée, appelée élagage alpha-bêta, permet à l’algorithme de ne pas explorer certains sous arbres si cela n’est pas utile, c’est-à-dire si on sait que la position à l’origine du sous arbre aura un score plus mauvais qu’une position déjà évaluée. Cette amélioration à permis d’améliorer la rapidité de l’algorithme et donc d’augmenter la profondeur de recherche.
 
 
 
-# Tester son IA en local
+# Monte Carlo
 
-La classe Player actuelle vous permet de jouer contre votre IA. Vous pouvez  modifier facilement cette classe afin de faire jouer deux IA l’une contre l’autre.
+## Principe de l’algorithme
+### AlgoRechercheM_C
+- Meilleur Coup: On renvoie le coup devant être joué par le joueur qui a lancé méthode d’algo de Recherche. On limite la recherche du meilleur coup grâce à un nombre d’itération et une limite temporelle qu’on fixe à 100ms.
+### ArbreMonteCarlo
+- Selection: permet de sélectionner la feuille de l'arbre MonteCarlo dont on va simuler le reste de la partie. Si la partie est terminée lors de cette étape, l’expansion n’est pas nécessaire, on passe directement à l'étape 'backPropagation'.
+- Expansion: permet de créer un nouveau nœud à partir de la feuille choisie précédemment. Si la partie est terminée lors de cette étape, la simulation n’est pas nécessaire, on passe directement à l'étape 'backPropagation'.
+- Simulation: cette fonction simule le reste de la partie à partir d'une configuration (issue de l'étape de l'expansion dans notre cas). Les coups sont joués aléatoirement jusqu’à la fin de la partie. On détermine ensuite le joueur vainqueur.
+- BackPropagation: permet de modifier les paramètres des nœuds de la branche en fonction des résultats de la simulation. On modifie le paramètre : nbSimulation et nbVictoire afin d’actualiser les scores UCT.
+- Developper: correspond à un cycle des 4 actions précédemment définies. 
 
-# Tester son IA sur Codingame
-
-Afin de tester votre IA sur *Codingame*, il vous faudra modifier le contenu de la classe **Player** pour être compatible avec le mode de fonctionnement de la plateforme, à savoir récupérer les données en entrée ( code déjà fourni par le site ) et retourner sur la sortie standard votre coup. La classe **Arbitre** ne sera plus nécessaire puisque se sera la plateforme Codingame qui fera office d'arbitre.  La classe **Player** contient également la version pour le bon fonctionnement de votre IA sur Codingame. Il suffit de dé-commenter la partie *Codingame* et commenter le jeu en local
-
-
-Pour générer un seul fichier à partir de l’ensemble de vos classes  vous utiliserez le **builder.jar** en effectuant les commandes suivantes.
-
-Lancez l’invite de commande **cmd.exe** et  tapez les commandes suivantes :
-```bash 
-# C est la lettre du disque dur où se trouve votre projet 
-C: 
-
-# Se positionner dans le répertoire src du projet
-# exemple cd c:\netbean\TicTacToeCodingame\src
-cd <nom_du_répertoire source>  
-
-# Lancer le builder.jar
-# Cette commande va générer un fichier Player.java dans le répertoire courant.
-# C’est ce fichier qu’il faudra poster sur codingame.
-
-java –jar builder.jar .\tictactoecodingame\Player.java 
-```
-# Amélioration des algorithmes
-
-Lorsque vos algorithmes MinMax et MCTS seront implémentés et fonctionneront correctement, votre objectif sera de rechercher les possibilités d'améliorations de ces algorithmes. Vous indiquerez le résultat de vos recherches et les implémenterez afin d'améliorer votre IA.
-
-
-
+## Commentaire 
+Après avoir fini l’implémentation de cet algorithme, nous nous somme aperçu que celui-ci ne fonctionnait pas comme prévu, car il actualisait mal les résultats des parties. Il ne choisissait donc pas le meilleur coup, mais souvent au coup bien inférieur.  Nous n’avons malheureusement pas encore réussi à résoudre ce problème.
